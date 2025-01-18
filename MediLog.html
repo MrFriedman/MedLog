@@ -1,0 +1,426 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   MediLog
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   .hidden { display: none; }
+  </style>
+  <script>
+   function showSection(section) {
+            document.getElementById('medilog-section').classList.add('hidden');
+            document.getElementById('passports-section').classList.add('hidden');
+            document.getElementById(section + '-section').classList.remove('hidden');
+        }
+
+        function startRecording() {
+            document.getElementById('recording-section').classList.remove('hidden');
+            // Start recording logic here
+        }
+
+        function stopRecording() {
+            document.getElementById('recording-section').classList.add('hidden');
+            document.getElementById('transcription-section').classList.remove('hidden');
+            // Stop recording and process transcription logic here
+        }
+  </script>
+ </head>
+ <body class="bg-gray-100 font-roboto">
+  <div class="container mx-auto p-4">
+   <h1 class="text-4xl font-bold text-center mb-8">
+    MediLog
+   </h1>
+   <div class="flex justify-center mb-8">
+    <button class="bg-black text-white font-bold py-2 px-6 rounded-l focus:outline-none focus:shadow-outline" onclick="showSection('medilog')">
+     MediLog
+    </button>
+    <button class="bg-gray-300 text-black font-bold py-2 px-6 rounded-r focus:outline-none focus:shadow-outline" onclick="showSection('passports')">
+     Medical Passports
+    </button>
+   </div>
+   <div class="bg-white p-8 rounded-lg shadow-lg mb-8" id="medilog-section">
+    <h2 class="text-3xl font-bold mb-6">
+     MediLog
+    </h2>
+    <div class="mb-8">
+     <h3 class="text-2xl font-bold mb-4">
+      Consent Form
+     </h3>
+     <p class="mb-4">
+      Please provide your consent to record the conversation for medical record purposes.
+     </p>
+     <form class="mb-4">
+      <div class="mb-4">
+       <label class="block text-gray-700 text-sm font-bold mb-2" for="patient-name">
+        Patient Name
+       </label>
+       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="patient-name" placeholder="Enter your name" type="text"/>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700 text-sm font-bold mb-2" for="doctor-name">
+        Doctor Name
+       </label>
+       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="doctor-name" placeholder="Enter doctor's name" type="text"/>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700 text-sm font-bold mb-2" for="consent">
+        Consent
+       </label>
+       <input class="mr-2 leading-tight" id="consent" type="checkbox"/>
+       <span class="text-sm">
+        I consent to the recording of this conversation for medical record purposes.
+       </span>
+      </div>
+      <button class="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="startRecording()" type="button">
+       Start Recording
+      </button>
+     </form>
+    </div>
+    <div class="hidden mb-8" id="recording-section">
+     <h3 class="text-2xl font-bold mb-4">
+      Recording in Progress
+     </h3>
+     <p class="mb-4">
+      The conversation is being recorded. Please speak clearly.
+     </p>
+     <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="stopRecording()" type="button">
+      Stop Recording
+     </button>
+    </div>
+    <div class="hidden" id="transcription-section">
+     <h3 class="text-2xl font-bold mb-4">
+      Transcription and Medical Records
+     </h3>
+     <div class="mb-4">
+      <h4 class="text-xl font-bold mb-2">
+       Transcription
+      </h4>
+      <p class="text-gray-700" id="transcription-text">
+       Transcribed conversation will appear here.
+      </p>
+     </div>
+     <div>
+      <h4 class="text-xl font-bold mb-2">
+       Medical Records
+      </h4>
+      <p class="text-gray-700">
+       <strong>
+        Symptoms:
+       </strong>
+       Extracted symptoms will appear here.
+      </p>
+      <p class="text-gray-700">
+       <strong>
+        Prescriptions:
+       </strong>
+       Extracted prescriptions will appear here.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="hidden bg-white p-8 rounded-lg shadow-lg mb-8" id="passports-section">
+    <h2 class="text-3xl font-bold mb-6">
+     Medical Passports
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+     <div class="bg-white p-6 rounded-lg shadow-lg">
+      <img alt="A detailed medical passport with patient information and medical history" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200"/>
+      <h2 class="text-xl font-bold mt-4">
+       John Doe
+      </h2>
+      <p class="mt-2 text-gray-600">
+       Age: 30
+      </p>
+      <p class="mt-2 text-gray-600">
+       Blood Type: O+
+      </p>
+      <p class="mt-2 text-gray-600">
+       Allergies: None
+      </p>
+      <p class="mt-2 text-gray-600">
+       Medications: None
+      </p>
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow-lg">
+      <img alt="A detailed medical passport with patient information and medical history" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200"/>
+      <h2 class="text-xl font-bold mt-4">
+       Jane Smith
+      </h2>
+      <p class="mt-2 text-gray-600">
+       Age: 25
+      </p>
+      <p class="mt-2 text-gray-600">
+       Blood Type: A-
+      </p>
+      <p class="mt-2 text-gray-600">
+       Allergies: Penicillin
+      </p>
+      <p class="mt-2 text-gray-600">
+       Medications: Ibuprofen
+      </p>
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow-lg">
+      <img alt="A detailed medical passport with patient information and medical history" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200"/>
+      <h2 class="text-xl font-bold mt-4">
+       Alice Johnson
+      </h2>
+      <p class="mt-2 text-gray-600">
+       Age: 40
+      </p>
+      <p class="mt-2 text-gray-600">
+       Blood Type: B+
+      </p>
+      <p class="mt-2 text-gray-600">
+       Allergies: Latex
+      </p>
+      <p class="mt-2 text-gray-600">
+       Medications: Metformin
+      </p>
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow-lg">
+      <img alt="A detailed medical passport with patient information and medical history" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200"/>
+      <h2 class="text-xl font-bold mt-4">
+       Michael Brown
+      </h2>
+      <p class="mt-2 text-gray-600">
+       Age: 50
+      </p>
+      <p class="mt-2 text-gray-600">
+       Blood Type: AB-
+      </p>
+      <p class="mt-2 text-gray-600">
+       Allergies: None
+      </p>
+      <p class="mt-2 text-gray-600">
+       Medications: Lisinopril
+      </p>
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow-lg">
+      <img alt="A detailed medical passport with patient information and medical history" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200"/>
+      <h2 class="text-xl font-bold mt-4">
+       Emily Davis
+      </h2>
+      <p class="mt-2 text-gray-600">
+       Age: 35
+      </p>
+      <p class="mt-2 text-gray-600">
+       Blood Type: O-
+      </p>
+      <p class="mt-2 text-gray-600">
+       Allergies: Peanuts
+      </p>
+      <p class="mt-2 text-gray-600">
+       Medications: Albuterol
+      </p>
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow-lg">
+      <img alt="A detailed medical passport with patient information and medical history" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200"/>
+      <h2 class="text-xl font-bold mt-4">
+       David Wilson
+      </h2>
+      <p class="mt-2 text-gray-600">
+       Age: 45
+      </p>
+      <p class="mt-2 text-gray-600">
+       Blood Type: A+
+      </p>
+      <p class="mt-2 text-gray-600">
+       Allergies: Shellfish
+      </p>
+      <p class="mt-2 text-gray-600">
+       Medications: Atorvastatin
+      </p>
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow-lg">
+      <img alt="A detailed medical passport with patient information and medical history" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200"/>
+      <h2 class="text-xl font-bold mt-4">
+       Sophia Martinez
+      </h2>
+      <p class="mt-2 text-gray-600">
+       Age: 28
+      </p>
+      <p class="mt-2 text-gray-600">
+       Blood Type: B-
+      </p>
+      <p class="mt-2 text-gray-600">
+       Allergies: None
+      </p>
+      <p class="mt-2 text-gray-600">
+       Medications: Levothyroxine
+      </p>
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow-lg">
+      <img alt="A detailed medical passport with patient information and medical history" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200"/>
+      <h2 class="text-xl font-bold mt-4">
+       James Anderson
+      </h2>
+      <p class="mt-2 text-gray-600">
+       Age: 60
+      </p>
+      <p class="mt-2 text-gray-600">
+       Blood Type: AB+
+      </p>
+      <p class="mt-2 text-gray-600">
+       Allergies: None
+      </p>
+      <p class="mt-2 text-gray-600">
+       Medications: Warfarin
+      </p>
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow-lg">
+      <img alt="A detailed medical passport with patient information and medical history" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200"/>
+      <h2 class="text-xl font-bold mt-4">
+       Olivia Thomas
+      </h2>
+      <p class="mt-2 text-gray-600">
+       Age: 22
+      </p>
+      <p class="mt-2 text-gray-600">
+       Blood Type: O+
+      </p>
+      <p class="mt-2 text-gray-600">
+       Allergies: None
+      </p>
+      <p class="mt-2 text-gray-600">
+       Medications: None
+      </p>
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow-lg">
+      <img alt="A detailed medical passport with patient information and medical history" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200"/>
+      <h2 class="text-xl font-bold mt-4">
+       Liam Johnson
+      </h2>
+      <p class="mt-2 text-gray-600">
+       Age: 34
+      </p>
+      <p class="mt-2 text-gray-600">
+       Blood Type: B+
+      </p>
+      <p class="mt-2 text-gray-600">
+       Allergies: Pollen
+      </p>
+      <p class="mt-2 text-gray-600">
+       Medications: Cetirizine
+      </p>
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow-lg">
+      <img alt="A detailed medical passport with patient information and medical history" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200"/>
+      <h2 class="text-xl font-bold mt-4">
+       Emma White
+      </h2>
+      <p class="mt-2 text-gray-600">
+       Age: 29
+      </p>
+      <p class="mt-2 text-gray-600">
+       Blood Type: A-
+      </p>
+      <p class="mt-2 text-gray-600">
+       Allergies: Dust
+      </p>
+      <p class="mt-2 text-gray-600">
+       Medications: Fluticasone
+      </p>
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow-lg">
+      <img alt="A detailed medical passport with patient information and medical history" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200"/>
+      <h2 class="text-xl font-bold mt-4">
+       Noah Harris
+      </h2>
+      <p class="mt-2 text-gray-600">
+       Age: 42
+      </p>
+      <p class="mt-2 text-gray-600">
+       Blood Type: O-
+      </p>
+      <p class="mt-2 text-gray-600">
+       Allergies: None
+      </p>
+      <p class="mt-2 text-gray-600">
+       Medications: Metoprolol
+      </p>
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow-lg">
+      <img alt="A detailed medical passport with patient information and medical history" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200"/>
+      <h2 class="text-xl font-bold mt-4">
+       Ava Clark
+      </h2>
+      <p class="mt-2 text-gray-600">
+       Age: 37
+      </p>
+      <p class="mt-2 text-gray-600">
+       Blood Type: AB-
+      </p>
+      <p class="mt-2 text-gray-600">
+       Allergies: None
+      </p>
+      <p class="mt-2 text-gray-600">
+       Medications: Insulin
+      </p>
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow-lg">
+      <img alt="A detailed medical passport with patient information and medical history" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200"/>
+      <h2 class="text-xl font-bold mt-4">
+       William Lewis
+      </h2>
+      <p class="mt-2 text-gray-600">
+       Age: 55
+      </p>
+      <p class="mt-2 text-gray-600">
+       Blood Type: B+
+      </p>
+      <p class="mt-2 text-gray-600">
+       Allergies: None
+      </p>
+      <p class="mt-2 text-gray-600">
+       Medications: Aspirin
+      </p>
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow-lg">
+      <img alt="A detailed medical passport with patient information and medical history" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200"/>
+      <h2 class="text-xl font-bold mt-4">
+       Isabella Walker
+      </h2>
+      <p class="mt-2 text-gray-600">
+       Age: 31
+      </p>
+      <p class="mt-2 text-gray-600">
+       Blood Type: A+
+      </p>
+      <p class="mt-2 text-gray-600">
+       Allergies: None
+      </p>
+      <p class="mt-2 text-gray-600">
+       Medications: None
+      </p>
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow-lg">
+      <img alt="A detailed medical passport with patient information and medical history" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200"/>
+      <h2 class="text-xl font-bold mt-4">
+       James Hall
+      </h2>
+      <p class="mt-2 text-gray-600">
+       Age: 48
+      </p>
+      <p class="mt-2 text-gray-600">
+       Blood Type: O+
+      </p>
+      <p class="mt-2 text-gray-600">
+       Allergies: None
+      </p>
+      <p class="mt-2 text-gray-600">
+       Medications: Lisinopril
+      </p>
+     </div>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
+
+
